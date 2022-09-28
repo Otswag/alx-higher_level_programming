@@ -2,4 +2,4 @@
 def print_sorted_dictionary(a_dictionary):
     if(a_dictionary):
         for a, val in sorted(a_dictionary.items()):
-            print("{a}: {val}")
+            print(f"{a}: {val}")
