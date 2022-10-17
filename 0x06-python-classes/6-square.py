@@ -1,72 +1,75 @@
 #!/usr/bin/python3
-"""
-square class
-"""
+"""Square class: defines a square"""
 
 
 class Square:
+    """Represents a square"""
 
     def __init__(self, size=0, position=(0, 0)):
-        self.size = size
-        self.position = position
-    """
-    creates a square object
-    """
-    @property
-    def size(self):
-        return self.__size
-        """
-        gets size
-        """
-    @property
-    def position(self):
-        return self.__position
-        """
-        gets position
-        """
-    @position.setter
-    def position(self, value):
-        if(type(value) is not tuple or len(value) is not 2 or
-           type(value[0]) is not int or
-           type(value[1]) is not int):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if(value[0] < 0 or value[1] < 0):
-            raise ValueError("position must be a tuple of 2 positive integers")
-        self.__position = value
+        """Initializes private square size attribute and position attribute
+        Args:
+        size (int): the size of the square once instance is created
+        position (int): position where the square is going to be placed"""
 
-        """
-        sets position
-        position has to be a tuple of positive integers
-        Raise:
-            ValueError
-            TypeError
-        """
-    @size.setter
-    def size(self, value):
-        if(type(value) is not int):
-            raise TypeError("size must be an integer")
-        elif(value < 0):
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
-        """
-        sets size
-        size has to be an integer and positive
-        """
+        self.__size = size
+        self.position = position
 
     def area(self):
-        return(self.__size**2)
-        """
-        returns the area of the size of the square
-        """
+        """Initializes public square area attribute"""
+
+        return (self.__size * self.__size)
+
+    @property
+    def size(self):
+        """Initializes square size return"""
+        return (self.__size)
+
+    @property
+    def position(self):
+        """Initializes square position"""
+        return (self.__position)
+
+    @size.setter
+    def size(self, value):
+        """Initializes square size attribute
+        Args:
+        value (int): the size of a size of the square"""
+
+        if type(value) != int:
+            raise TypeError("size must be an integer")
+        else:
+            if value < 0:
+                raise ValueError("size must be >= 0")
+            else:
+                self.__size = value
+
+    @position.setter
+    def position(self, value):
+        """Initializes square position attribute
+        Args:
+        value (int): the position of the square"""
+
+        if not isinstance(value, tuple) or len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if not isinstance(value[0], int) or not isinstance(value[1], int):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if value[0] < 0 or value[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__position = value
+
     def my_print(self):
-        if(self.size == 0):
+        """Initializes square printing"""
+
+        if self.__size == 0:
             print()
             return
-        for x in range(self.position[1]):
-            print()
-        for x in range(self.size):
-            print("{}{}".format(" " * self.position[0], "#" * self.size))
-        """
-        prints a square of hashtags based on position and size
-        """
+        else:
+            for position1 in range(self.__position[1]):
+                print()
+            for i in range(self.__size):
+                for position2 in range(self.__position[0]):
+                    print(" ", end="")
+                for j in range(self.__size):
+                    print("#", end="")
+                print()
