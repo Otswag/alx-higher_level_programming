@@ -2,7 +2,6 @@
 
 """ Defines a Locked Class. """
 
-
 class LockedClass:
     """
     A locked class that only lets the user dynamically create the instance
