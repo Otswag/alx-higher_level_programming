@@ -1,8 +1,12 @@
 #!/usr/bin/python3
+"""
+LockedClass
+"""
 
-""" Defines a Locked Class. """
 
 class LockedClass:
-    __slots__ = ['first_name']
-    def __init__(self, name=""):
-        self.first_name = name
+    """prevents user from dynamically creating a new
+    instance attribute except if the new instance attribute is
+    called first_name
+    """
+    __slots__ = ["first_name"]
